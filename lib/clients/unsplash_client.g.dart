@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: prefer_const_declarations
-
 part of 'unsplash_client.dart';
 
 // **************************************************************************
@@ -15,8 +13,7 @@ class _UnsplashClient implements UnsplashClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??=
-        'https://api.unsplash.com/photos/?client_id=ab3411e4ac868c2646c0ed488dfd919ef612b04c264f3374c97fff98ed253dc9';
+    baseUrl ??= 'https://api.unsplash.com/';
   }
 
   final Dio _dio;
@@ -37,7 +34,7 @@ class _UnsplashClient implements UnsplashClient {
     )
             .compose(
               _dio.options,
-              '',
+              '/photos',
               queryParameters: queryParameters,
               data: _data,
             )

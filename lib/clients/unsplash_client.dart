@@ -7,12 +7,10 @@ import 'package:unsplash_client/models/photo.dart';
 
 part 'unsplash_client.g.dart';
 
-@RestApi(
-    baseUrl:
-        'https://api.unsplash.com/photos/?client_id=ab3411e4ac868c2646c0ed488dfd919ef612b04c264f3374c97fff98ed253dc9')
+@RestApi(baseUrl: 'https://api.unsplash.com/')
 abstract class UnsplashClient {
   factory UnsplashClient(Dio dio, {String baseUrl}) = _UnsplashClient;
 
-  @GET('/')
+  @GET('/photos')
   Future<List<Photo>> getPhotos();
 }
