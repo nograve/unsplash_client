@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:unsplash_client/clients/unsplash_client.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:unsplash_client/cubit/photos_cubit.dart';
 import 'package:unsplash_client/widgets/photo_list_tile.dart';
 
 class FeedView extends StatelessWidget {
@@ -8,22 +8,26 @@ class FeedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<PhotosCubit>().loadPhotos();
     return Scaffold(
-      body: FutureBuilder(
-        future: GetIt.instance<UnsplashClient>().getPhotos(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            final photos = snapshot.data!;
-            return ListView.separated(
+      body: BlocBuilder<PhotosCubit, PhotosState>(
+        builder: (context, state) {
+          return state.maybeWhen(
+            data: (photos) => ListView.separated(
               itemCount: photos.length,
               separatorBuilder: (BuildContext context, int index) =>
                   const Divider(),
               itemBuilder: (context, index) =>
                   PhotoListTile(photo: photos[index]),
-            );
-          } else {
-            return const CircularProgressIndicator();
-          }
+            ),
+            loading: (_) => const CircularProgressIndicator(),
+            error: (_) => const Center(
+              child: Text('Something bad happened...'),
+            ),
+            orElse: () => const Center(
+              child: Text("I haven't found anything. :("),
+            ),
+          );
         },
       ),
     );

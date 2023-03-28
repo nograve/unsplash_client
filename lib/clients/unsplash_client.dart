@@ -13,4 +13,7 @@ abstract class UnsplashClient {
 
   @GET('/photos')
   Future<List<Photo>> getPhotos();
+
+  @GET('/search/photos')
+  Future<String> searchPhotos(@Query('query') String query);
 }
