@@ -4,8 +4,17 @@ import 'package:unsplash_client/main.dart' as app;
 
 void main() {
   app.loadClients();
+  final photosCubit = PhotosCubit();
+
+  test(
+      'After initializing PhotosCubit state should be equal to '
+      'PhotosState.empty', () {
+    expect(
+      photosCubit.state.whenOrNull(empty: (_) => true),
+      true,
+    );
+  });
   group('loadPhotos method test', () {
-    final photosCubit = PhotosCubit();
     test(
         'loadPhotos method with no arguments should change state to '
         'PhotosState.data', () async {
