@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unsplash_client/views/detailed_view.dart';
 
 import '../models/photo.dart';
 
@@ -15,13 +16,23 @@ class PhotoListTile extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     return Column(
       children: [
-        Container(
-          width: double.infinity,
-          height: width * 0.65,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(photo.urls!.regular!),
-              fit: BoxFit.cover,
+        GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  DetailedView(imageUrl: photo.urls!.regular!),
+            ),
+          ),
+          child: SizedBox(
+            width: double.infinity,
+            height: width * 0.65,
+            child: Hero(
+              tag: photo.urls!.regular!,
+              child: Image.network(
+                photo.urls!.regular!,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
