@@ -8,27 +8,29 @@ class FeedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<PhotosCubit>().loadPhotos();
     return Scaffold(
-      body: BlocBuilder<PhotosCubit, PhotosState>(
-        builder: (context, state) {
-          return state.maybeWhen(
-            data: (photos) => ListView.separated(
-              itemCount: photos.length,
-              separatorBuilder: (BuildContext context, int index) =>
-                  const Divider(),
-              itemBuilder: (context, index) =>
-                  PhotoListTile(photo: photos[index]),
-            ),
-            loading: (_) => const CircularProgressIndicator(),
-            error: (_) => const Center(
-              child: Text('Something bad happened...'),
-            ),
-            orElse: () => const Center(
-              child: Text("I haven't found anything. :("),
-            ),
-          );
-        },
+      body: FutureBuilder(
+        future: context.read<PhotosCubit>().loadPhotos(),
+        builder: (context, snapshot) => BlocBuilder<PhotosCubit, PhotosState>(
+          builder: (context, state) {
+            return state.maybeWhen(
+              data: (photos) => ListView.separated(
+                itemCount: photos.length,
+                separatorBuilder: (BuildContext context, int index) =>
+                    const Divider(),
+                itemBuilder: (context, index) =>
+                    PhotoListTile(photo: photos[index]),
+              ),
+              loading: (_) => const CircularProgressIndicator(),
+              error: (_) => const Center(
+                child: Text('Something bad happened...'),
+              ),
+              orElse: () => const Center(
+                child: Text("I haven't found anything. :("),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
