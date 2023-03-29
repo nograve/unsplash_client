@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
+import 'package:logger/logger.dart';
 import 'package:unsplash_client/clients/unsplash_client.dart';
 
 import '../models/photo.dart';
@@ -34,7 +35,8 @@ class PhotosCubit extends Cubit<PhotosState> {
         emit(const PhotosState.empty(photos: []));
       }
     } catch (e) {
-      print(e);
+      final logger = Logger();
+      logger.e(e);
       emit(const PhotosState.error(photos: []));
     }
   }
