@@ -12,8 +12,7 @@ part 'photos_state.dart';
 part 'photos_cubit.freezed.dart';
 
 class PhotosCubit extends Cubit<PhotosState> {
-  PhotosCubit({required List<Photo> photos})
-      : super(PhotosState.initial(photos: photos));
+  PhotosCubit() : super(const PhotosState.empty(photos: []));
 
   Future<void> loadPhotos({String? query}) async {
     emit(const PhotosState.loading(photos: []));

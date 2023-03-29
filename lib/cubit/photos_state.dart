@@ -2,7 +2,6 @@ part of 'photos_cubit.dart';
 
 @freezed
 class PhotosState with _$PhotosState {
-  const factory PhotosState.initial({required List<Photo> photos}) = _Initial;
   const factory PhotosState.empty({required List<Photo> photos}) = _Empty;
   const factory PhotosState.loading({required List<Photo> photos}) = _Loading;
   const factory PhotosState.error({required List<Photo> photos}) = _Error;

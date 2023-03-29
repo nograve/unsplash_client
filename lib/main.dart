@@ -46,10 +46,10 @@ class MyApp extends StatelessWidget {
       home: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (_) => PhotosCubit(photos: []),
+            create: (_) => PhotosCubit(),
           ),
           BlocProvider(
-            create: (_) => SearchTextFieldCubit(isEnabled: false),
+            create: (_) => SearchTextFieldCubit(),
           ),
         ],
         child: const FeedView(),

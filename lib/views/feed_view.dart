@@ -11,8 +11,8 @@ class FeedView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: BlocBuilder<SearchTextFieldCubit, bool>(
-          builder: (context, state) => state
+        title: BlocBuilder<SearchTextFieldCubit, SearchTextFieldState>(
+          builder: (context, state) => state.query != null
               ? const TextField(
                   style: TextStyle(
                     color: Colors.white,
@@ -22,10 +22,11 @@ class FeedView extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () => context.read<SearchTextFieldCubit>().switchState(),
-            icon: BlocBuilder<SearchTextFieldCubit, bool>(
+            onPressed: () =>
+                context.read<SearchTextFieldCubit>().switchSearch(),
+            icon: BlocBuilder<SearchTextFieldCubit, SearchTextFieldState>(
               builder: (context, state) =>
-                  Icon(state ? Icons.done : Icons.search),
+                  Icon(state.query != null ? Icons.done : Icons.search),
             ),
           )
         ],

@@ -19,7 +19,6 @@ mixin _$PhotosState {
   List<Photo> get photos => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Photo> photos) initial,
     required TResult Function(List<Photo> photos) empty,
     required TResult Function(List<Photo> photos) loading,
     required TResult Function(List<Photo> photos) error,
@@ -28,7 +27,6 @@ mixin _$PhotosState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Photo> photos)? initial,
     TResult? Function(List<Photo> photos)? empty,
     TResult? Function(List<Photo> photos)? loading,
     TResult? Function(List<Photo> photos)? error,
@@ -37,7 +35,6 @@ mixin _$PhotosState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Photo> photos)? initial,
     TResult Function(List<Photo> photos)? empty,
     TResult Function(List<Photo> photos)? loading,
     TResult Function(List<Photo> photos)? error,
@@ -47,7 +44,6 @@ mixin _$PhotosState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Empty value) empty,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
@@ -56,7 +52,6 @@ mixin _$PhotosState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Empty value)? empty,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
@@ -65,7 +60,6 @@ mixin _$PhotosState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Empty value)? empty,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
@@ -110,165 +104,6 @@ class _$PhotosStateCopyWithImpl<$Res, $Val extends PhotosState>
               as List<Photo>,
     ) as $Val);
   }
-}
-
-/// @nodoc
-abstract class _$$_InitialCopyWith<$Res> implements $PhotosStateCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Photo> photos});
-}
-
-/// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$PhotosStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? photos = null,
-  }) {
-    return _then(_$_Initial(
-      photos: null == photos
-          ? _value._photos
-          : photos // ignore: cast_nullable_to_non_nullable
-              as List<Photo>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_Initial implements _Initial {
-  const _$_Initial({required final List<Photo> photos}) : _photos = photos;
-
-  final List<Photo> _photos;
-  @override
-  List<Photo> get photos {
-    if (_photos is EqualUnmodifiableListView) return _photos;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_photos);
-  }
-
-  @override
-  String toString() {
-    return 'PhotosState.initial(photos: $photos)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Initial &&
-            const DeepCollectionEquality().equals(other._photos, _photos));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_photos));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<Photo> photos) initial,
-    required TResult Function(List<Photo> photos) empty,
-    required TResult Function(List<Photo> photos) loading,
-    required TResult Function(List<Photo> photos) error,
-    required TResult Function(List<Photo> photos) data,
-  }) {
-    return initial(photos);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Photo> photos)? initial,
-    TResult? Function(List<Photo> photos)? empty,
-    TResult? Function(List<Photo> photos)? loading,
-    TResult? Function(List<Photo> photos)? error,
-    TResult? Function(List<Photo> photos)? data,
-  }) {
-    return initial?.call(photos);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Photo> photos)? initial,
-    TResult Function(List<Photo> photos)? empty,
-    TResult Function(List<Photo> photos)? loading,
-    TResult Function(List<Photo> photos)? error,
-    TResult Function(List<Photo> photos)? data,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(photos);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Empty value) empty,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Data value) data,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Empty value)? empty,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Data value)? data,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Empty value)? empty,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Data value)? data,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements PhotosState {
-  const factory _Initial({required final List<Photo> photos}) = _$_Initial;
-
-  @override
-  List<Photo> get photos;
-  @override
-  @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -340,7 +175,6 @@ class _$_Empty implements _Empty {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Photo> photos) initial,
     required TResult Function(List<Photo> photos) empty,
     required TResult Function(List<Photo> photos) loading,
     required TResult Function(List<Photo> photos) error,
@@ -352,7 +186,6 @@ class _$_Empty implements _Empty {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Photo> photos)? initial,
     TResult? Function(List<Photo> photos)? empty,
     TResult? Function(List<Photo> photos)? loading,
     TResult? Function(List<Photo> photos)? error,
@@ -364,7 +197,6 @@ class _$_Empty implements _Empty {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Photo> photos)? initial,
     TResult Function(List<Photo> photos)? empty,
     TResult Function(List<Photo> photos)? loading,
     TResult Function(List<Photo> photos)? error,
@@ -380,7 +212,6 @@ class _$_Empty implements _Empty {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Empty value) empty,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
@@ -392,7 +223,6 @@ class _$_Empty implements _Empty {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Empty value)? empty,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
@@ -404,7 +234,6 @@ class _$_Empty implements _Empty {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Empty value)? empty,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
@@ -499,7 +328,6 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Photo> photos) initial,
     required TResult Function(List<Photo> photos) empty,
     required TResult Function(List<Photo> photos) loading,
     required TResult Function(List<Photo> photos) error,
@@ -511,7 +339,6 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Photo> photos)? initial,
     TResult? Function(List<Photo> photos)? empty,
     TResult? Function(List<Photo> photos)? loading,
     TResult? Function(List<Photo> photos)? error,
@@ -523,7 +350,6 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Photo> photos)? initial,
     TResult Function(List<Photo> photos)? empty,
     TResult Function(List<Photo> photos)? loading,
     TResult Function(List<Photo> photos)? error,
@@ -539,7 +365,6 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Empty value) empty,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
@@ -551,7 +376,6 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Empty value)? empty,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
@@ -563,7 +387,6 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Empty value)? empty,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
@@ -657,7 +480,6 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Photo> photos) initial,
     required TResult Function(List<Photo> photos) empty,
     required TResult Function(List<Photo> photos) loading,
     required TResult Function(List<Photo> photos) error,
@@ -669,7 +491,6 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Photo> photos)? initial,
     TResult? Function(List<Photo> photos)? empty,
     TResult? Function(List<Photo> photos)? loading,
     TResult? Function(List<Photo> photos)? error,
@@ -681,7 +502,6 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Photo> photos)? initial,
     TResult Function(List<Photo> photos)? empty,
     TResult Function(List<Photo> photos)? loading,
     TResult Function(List<Photo> photos)? error,
@@ -697,7 +517,6 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Empty value) empty,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
@@ -709,7 +528,6 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Empty value)? empty,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
@@ -721,7 +539,6 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Empty value)? empty,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
@@ -815,7 +632,6 @@ class _$_Data implements _Data {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Photo> photos) initial,
     required TResult Function(List<Photo> photos) empty,
     required TResult Function(List<Photo> photos) loading,
     required TResult Function(List<Photo> photos) error,
@@ -827,7 +643,6 @@ class _$_Data implements _Data {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Photo> photos)? initial,
     TResult? Function(List<Photo> photos)? empty,
     TResult? Function(List<Photo> photos)? loading,
     TResult? Function(List<Photo> photos)? error,
@@ -839,7 +654,6 @@ class _$_Data implements _Data {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Photo> photos)? initial,
     TResult Function(List<Photo> photos)? empty,
     TResult Function(List<Photo> photos)? loading,
     TResult Function(List<Photo> photos)? error,
@@ -855,7 +669,6 @@ class _$_Data implements _Data {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Empty value) empty,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
@@ -867,7 +680,6 @@ class _$_Data implements _Data {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Empty value)? empty,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
@@ -879,7 +691,6 @@ class _$_Data implements _Data {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Empty value)? empty,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,

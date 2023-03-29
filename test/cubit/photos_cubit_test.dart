@@ -5,7 +5,7 @@ import 'package:unsplash_client/main.dart' as app;
 void main() {
   app.loadClients();
   group('loadPhotos method test', () {
-    final photosCubit = PhotosCubit(photos: []);
+    final photosCubit = PhotosCubit();
     test(
         'loadPhotos method with no arguments should change state to '
         'PhotosState.data', () async {
