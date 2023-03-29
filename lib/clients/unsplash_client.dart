@@ -1,8 +1,8 @@
 // ignore_for_file: unused_import
 
+import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:dio/dio.dart';
 import 'package:unsplash_client/models/photo.dart';
 
 part 'unsplash_client.g.dart';

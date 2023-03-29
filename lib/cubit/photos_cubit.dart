@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
-import 'package:unsplash_client/clients/unsplash_client.dart';
+import '../clients/unsplash_client.dart';
 
 import '../models/photo.dart';
 
