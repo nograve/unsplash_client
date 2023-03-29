@@ -18,18 +18,13 @@ class PhotosCubit extends Cubit<PhotosState> {
     emit(const PhotosState.loading(photos: []));
     try {
       final List<Photo> fetchedPhotos;
-      if (query != null) {
-        query = query.trim();
-        if (query.isNotEmpty) {
-          final fetchedQuery =
-              await GetIt.instance<UnsplashClient>().searchPhotos(query);
-          fetchedPhotos = ((jsonDecode(fetchedQuery)
-                  as Map<String, dynamic>)['results'] as List<dynamic>)
-              .map((i) => Photo.fromJson(i as Map<String, dynamic>))
-              .toList();
-        } else {
-          fetchedPhotos = await GetIt.instance<UnsplashClient>().getPhotos();
-        }
+      if (query != null && (query = query.trim()).isNotEmpty) {
+        final fetchedQuery =
+            await GetIt.instance<UnsplashClient>().searchPhotos(query);
+        fetchedPhotos = ((jsonDecode(fetchedQuery)
+                as Map<String, dynamic>)['results'] as List<dynamic>)
+            .map((i) => Photo.fromJson(i as Map<String, dynamic>))
+            .toList();
       } else {
         fetchedPhotos = await GetIt.instance<UnsplashClient>().getPhotos();
       }

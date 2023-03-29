@@ -12,10 +12,28 @@ class FeedView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: BlocBuilder<SearchTextFieldCubit, SearchTextFieldState>(
-          builder: (context, state) => state.query != null
-              ? const TextField(
-                  style: TextStyle(
-                    color: Colors.white,
+          builder: (context, state) => state.maybeWhen(
+            disabled: (_) => false,
+            orElse: () => true,
+          )
+              ? TextField(
+                  onSubmitted: (query) => context
+                      .read<SearchTextFieldCubit>()
+                      .changeSearchQuery(query: query),
+                  style: const TextStyle(
+                    color: Colors.black,
+                  ),
+                  decoration: InputDecoration(
+                    fillColor: Color(Colors.grey.shade300.value),
+                    filled: true,
+                    prefixIcon: const Icon(Icons.search),
+                    prefixIconColor: Colors.black,
+                    enabledBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
                   ),
                 )
               : const Text('Unsplash Client'),
@@ -25,37 +43,52 @@ class FeedView extends StatelessWidget {
             onPressed: () =>
                 context.read<SearchTextFieldCubit>().switchSearch(),
             icon: BlocBuilder<SearchTextFieldCubit, SearchTextFieldState>(
-              builder: (context, state) =>
-                  Icon(state.query != null ? Icons.done : Icons.search),
+              builder: (context, state) => state.maybeWhen(
+                disabled: (_) => false,
+                orElse: () => true,
+              )
+                  ? const Icon(Icons.cancel)
+                  : const Icon(Icons.search),
             ),
           )
         ],
       ),
-      body: FutureBuilder(
-        future: context.read<PhotosCubit>().loadPhotos(),
-        builder: (context, snapshot) => BlocBuilder<PhotosCubit, PhotosState>(
-          builder: (context, state) {
-            return state.maybeWhen(
-              data: (photos) => RefreshIndicator(
-                onRefresh: () => context.read<PhotosCubit>().loadPhotos(),
-                child: ListView.separated(
-                  itemCount: photos.length,
-                  separatorBuilder: (BuildContext context, int index) =>
-                      const Divider(),
-                  itemBuilder: (context, index) =>
-                      PhotoListTile(photo: photos[index]),
-                ),
-              ),
-              loading: (_) => const CircularProgressIndicator(),
-              error: (_) => const Center(
-                child: Text('Something bad happened...'),
-              ),
-              orElse: () => const Center(
-                child: Text("I haven't found anything. :("),
-              ),
-            );
-          },
-        ),
+      body: BlocBuilder<SearchTextFieldCubit, SearchTextFieldState>(
+        builder: (context, searchTextFieldState) {
+          return FutureBuilder(
+            future: context
+                .read<PhotosCubit>()
+                .loadPhotos(query: searchTextFieldState.query),
+            builder: (context, snapshot) =>
+                BlocBuilder<PhotosCubit, PhotosState>(
+              builder: (context, photosState) {
+                return photosState.maybeWhen(
+                  data: (photos) => RefreshIndicator(
+                    onRefresh: () => context
+                        .read<PhotosCubit>()
+                        .loadPhotos(query: searchTextFieldState.query),
+                    child: ListView.separated(
+                      itemCount: photos.length,
+                      separatorBuilder: (BuildContext context, int index) =>
+                          const Divider(),
+                      itemBuilder: (context, index) =>
+                          PhotoListTile(photo: photos[index]),
+                    ),
+                  ),
+                  loading: (_) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  error: (_) => const Center(
+                    child: Text('Something bad happened...'),
+                  ),
+                  orElse: () => const Center(
+                    child: Text("I haven't found anything. :("),
+                  ),
+                );
+              },
+            ),
+          );
+        },
       ),
     );
   }
