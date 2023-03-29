@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:unsplash_client/cubit/search_text_field_cubit.dart';
 import '../cubit/photos_cubit.dart';
 import '../widgets/photo_list_tile.dart';
 
@@ -9,17 +10,40 @@ class FeedView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: BlocBuilder<SearchTextFieldCubit, bool>(
+          builder: (context, state) => state
+              ? const TextField(
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                )
+              : const Text('Unsplash Client'),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () => context.read<SearchTextFieldCubit>().switchState(),
+            icon: BlocBuilder<SearchTextFieldCubit, bool>(
+              builder: (context, state) =>
+                  Icon(state ? Icons.done : Icons.search),
+            ),
+          )
+        ],
+      ),
       body: FutureBuilder(
         future: context.read<PhotosCubit>().loadPhotos(),
         builder: (context, snapshot) => BlocBuilder<PhotosCubit, PhotosState>(
           builder: (context, state) {
             return state.maybeWhen(
-              data: (photos) => ListView.separated(
-                itemCount: photos.length,
-                separatorBuilder: (BuildContext context, int index) =>
-                    const Divider(),
-                itemBuilder: (context, index) =>
-                    PhotoListTile(photo: photos[index]),
+              data: (photos) => RefreshIndicator(
+                onRefresh: () => context.read<PhotosCubit>().loadPhotos(),
+                child: ListView.separated(
+                  itemCount: photos.length,
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const Divider(),
+                  itemBuilder: (context, index) =>
+                      PhotoListTile(photo: photos[index]),
+                ),
               ),
               loading: (_) => const CircularProgressIndicator(),
               error: (_) => const Center(
