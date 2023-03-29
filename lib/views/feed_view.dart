@@ -8,7 +8,7 @@ class FeedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<PhotosCubit>().loadPhotos();
+    context.read<PhotosCubit>().loadPhotos(query: '');
     return Scaffold(
       body: BlocBuilder<PhotosCubit, PhotosState>(
         builder: (context, state) {
