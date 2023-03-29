@@ -7,6 +7,8 @@ import 'clients/unsplash_client.dart';
 import 'cubit/photos_cubit.dart';
 import 'views/feed_view.dart';
 
+import 'utils/constants/colors.dart';
+
 void main() {
   loadClients();
   runApp(const MyApp());
@@ -27,18 +29,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         primarySwatch: const MaterialColor(
-          0xFF000000,
+          primarySwatchColorCode,
           {
-            50: Color(0xFF000000),
-            100: Color(0xFF000000),
-            200: Color(0xFF000000),
-            300: Color(0xFF000000),
-            400: Color(0xFF000000),
-            500: Color(0xFF000000),
-            600: Color(0xFF000000),
-            700: Color(0xFF000000),
-            800: Color(0xFF000000),
-            900: Color(0xFF000000),
+            50: Color(primarySwatchColorCode),
+            100: Color(primarySwatchColorCode),
+            200: Color(primarySwatchColorCode),
+            300: Color(primarySwatchColorCode),
+            400: Color(primarySwatchColorCode),
+            500: Color(primarySwatchColorCode),
+            600: Color(primarySwatchColorCode),
+            700: Color(primarySwatchColorCode),
+            800: Color(primarySwatchColorCode),
+            900: Color(primarySwatchColorCode),
           },
         ),
       ),
