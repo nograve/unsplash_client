@@ -12,9 +12,8 @@ void main() {
       await photosCubit.loadPhotos();
       expect(
         photosCubit.state.whenOrNull(
-              data: (photos) => photos,
-            ) !=
-            null,
+          data: (_) => true,
+        ),
         true,
       );
     });
