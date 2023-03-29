@@ -8,11 +8,6 @@ class SearchTextFieldCubit extends Cubit<SearchTextFieldState> {
   SearchTextFieldCubit()
       : super(const SearchTextFieldState.disabled(query: null));
 
-  // void disableSearch() =>
-  //     emit(const SearchTextFieldState.disabled(query: null));
-
-  // void enableSearch() => emit(const SearchTextFieldState.enabled(query: ''));
-
   void switchSearch() => emit(state.maybeWhen(
         disabled: (_) => const SearchTextFieldState.enabled(query: ''),
         orElse: () => const SearchTextFieldState.disabled(query: null),
