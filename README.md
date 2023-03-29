@@ -1,16 +1,10 @@
 # unsplash_client
 
-A new Flutter project.
+Simple application for loading and searching photos from Unsplash
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
+![Screenshot_1680114047](https://user-images.githubusercontent.com/37837886/228632648-1b819846-476c-4eab-b6a5-cc10e5d268ec.png)
+![Screenshot_1680114083](https://user-images.githubusercontent.com/37837886/228632713-ce816ee5-77a7-4d76-88dd-97444b4842fb.png)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
