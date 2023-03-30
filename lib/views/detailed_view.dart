@@ -12,8 +12,8 @@ class DetailedView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GestureDetector(
-        onPanUpdate: (details) {
-          if (details.delta.dy > 0) {
+        onVerticalDragUpdate: (details) {
+          if (details.delta.dy > 8.0) {
             Navigator.pop(context);
           }
         },
@@ -24,7 +24,7 @@ class DetailedView extends StatelessWidget {
             tag: imageUrl,
             child: Image.network(
               imageUrl,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
         ),
