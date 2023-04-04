@@ -27,7 +27,7 @@ class DetailedView extends StatelessWidget {
               tag: imageUrl,
               child: Image.network(
                 imageUrl,
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
             ),
           ),
