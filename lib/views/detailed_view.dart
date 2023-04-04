@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 
 class DetailedView extends StatelessWidget {
   const DetailedView({
@@ -17,20 +18,9 @@ class DetailedView extends StatelessWidget {
             Navigator.pop(context);
           }
         },
-        child: InteractiveViewer(
-          panEnabled: false,
-          maxScale: 4.0,
-          child: SizedBox(
-            width: double.infinity,
-            height: double.infinity,
-            child: Hero(
-              tag: imageUrl,
-              child: Image.network(
-                imageUrl,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
+        child: PhotoView(
+          heroAttributes: PhotoViewHeroAttributes(tag: imageUrl),
+          imageProvider: NetworkImage(imageUrl),
         ),
       ),
     );
