@@ -16,22 +16,22 @@ class PhotoListTile extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     return Column(
       children: [
-        GestureDetector(
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>
-                  DetailedView(imageUrl: photo.urls!.regular!),
-            ),
-          ),
-          child: SizedBox(
-            width: double.infinity,
-            height: width * 0.65,
-            child: Hero(
-              tag: photo.urls!.regular!,
-              child: Image.network(
-                photo.urls!.regular!,
-                fit: BoxFit.cover,
+        Hero(
+          tag: photo.urls!.regular!,
+          child: Material(
+            child: Ink.image(
+              image: NetworkImage(photo.urls!.regular!),
+              width: double.infinity,
+              height: width * 0.65,
+              fit: BoxFit.cover,
+              child: InkWell(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        DetailedView(imageUrl: photo.urls!.regular!),
+                  ),
+                ),
               ),
             ),
           ),
