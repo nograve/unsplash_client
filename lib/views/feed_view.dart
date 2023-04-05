@@ -54,6 +54,7 @@ class FeedView extends StatelessWidget {
         ],
       ),
       body: BlocBuilder<SearchTextFieldCubit, SearchTextFieldState>(
+        buildWhen: (previous, current) => previous.query != current.query,
         builder: (context, searchTextFieldState) {
           return FutureBuilder(
             future: context

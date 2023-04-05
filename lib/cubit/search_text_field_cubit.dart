@@ -6,12 +6,12 @@ part 'search_text_field_cubit.freezed.dart';
 
 class SearchTextFieldCubit extends Cubit<SearchTextFieldState> {
   SearchTextFieldCubit()
-      : super(const SearchTextFieldState.disabled(query: null));
+      : super(const SearchTextFieldState.disabled(query: ''));
 
   void switchSearch() => emit(
         state.maybeWhen(
           disabled: (_) => const SearchTextFieldState.enabled(query: ''),
-          orElse: () => const SearchTextFieldState.disabled(query: null),
+          orElse: () => const SearchTextFieldState.disabled(query: ''),
         ),
       );
 
