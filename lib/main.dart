@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:unsplash_client/cubit/search_text_field_cubit.dart';
+import 'package:unsplash_client/repositories/photo_search_repository.dart';
 import 'clients/unsplash_client.dart';
 import 'cubit/photos_cubit.dart';
 import 'views/feed_view.dart';
@@ -48,7 +49,8 @@ class MyApp extends StatelessWidget {
       home: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (_) => PhotosCubit(),
+            create: (_) =>
+                PhotosCubit(photoSearchRepository: PhotoSearchRepositoryImpl()),
           ),
           BlocProvider(
             create: (_) => SearchTextFieldCubit(),

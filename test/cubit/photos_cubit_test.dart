@@ -1,10 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:unsplash_client/cubit/photos_cubit.dart';
 import 'package:unsplash_client/main.dart' as app;
+import 'package:unsplash_client/repositories/photo_search_repository.dart';
 
 void main() {
   app.loadClients();
-  final photosCubit = PhotosCubit();
+  final photosCubit =
+      PhotosCubit(photoSearchRepository: PhotoSearchRepositoryImpl());
 
   test(
       'After initializing PhotosCubit state should be equal to '
