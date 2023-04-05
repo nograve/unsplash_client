@@ -24,6 +24,7 @@ class FeedView extends StatelessWidget {
                     color: Colors.black,
                   ),
                   decoration: InputDecoration(
+                    hintText: 'Enter some text e.g.: dog',
                     fillColor: Color(Colors.grey.shade300.value),
                     filled: true,
                     prefixIcon: const Icon(Icons.search),
