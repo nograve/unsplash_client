@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:unsplash_client/models/photo.dart';
+import '../models/photo.dart';
 
 part 'unsplash_client.g.dart';
 

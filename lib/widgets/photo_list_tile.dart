@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:unsplash_client/views/detailed_view.dart';
+import '../views/detailed_view.dart';
 
 import '../models/photo.dart';
 

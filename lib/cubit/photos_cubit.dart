@@ -1,9 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:logger/logger.dart';
-import 'package:unsplash_client/repositories/photo_search_repository.dart';
-
+import '../repositories/photo_search_repository.dart';
 import '../models/photo.dart';
 
 part 'photos_state.dart';
