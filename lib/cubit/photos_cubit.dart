@@ -14,19 +14,20 @@ part 'photos_cubit.freezed.dart';
 class PhotosCubit extends Cubit<PhotosState> {
   PhotosCubit() : super(const PhotosState.empty(photos: []));
 
+  final _unsplashClient = GetIt.instance<UnsplashClient>();
+
   Future<void> loadPhotos({String? query}) async {
     emit(const PhotosState.loading(photos: []));
     try {
       final List<Photo> fetchedPhotos;
       if (query != null && (query = query.trim()).isNotEmpty) {
-        final fetchedQuery =
-            await GetIt.instance<UnsplashClient>().searchPhotos(query);
+        final fetchedQuery = await _unsplashClient.searchPhotos(query);
         fetchedPhotos = ((jsonDecode(fetchedQuery)
                 as Map<String, dynamic>)['results'] as List<dynamic>)
             .map((i) => Photo.fromJson(i as Map<String, dynamic>))
             .toList();
       } else {
-        fetchedPhotos = await GetIt.instance<UnsplashClient>().getPhotos();
+        fetchedPhotos = await _unsplashClient.getPhotos();
       }
       if (fetchedPhotos.isNotEmpty) {
         emit(PhotosState.data(photos: fetchedPhotos));
