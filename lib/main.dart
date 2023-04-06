@@ -8,8 +8,6 @@ import 'clients/unsplash_client.dart';
 import 'cubit/photos_cubit.dart';
 import 'views/feed_view.dart';
 
-import 'utils/constants/colors.dart';
-
 void main() {
   loadClients();
   runApp(const MyApp());
@@ -30,22 +28,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: const MaterialColor(
-          primarySwatchColorCode,
-          {
-            50: Color(primarySwatchColorCode),
-            100: Color(primarySwatchColorCode),
-            200: Color(primarySwatchColorCode),
-            300: Color(primarySwatchColorCode),
-            400: Color(primarySwatchColorCode),
-            500: Color(primarySwatchColorCode),
-            600: Color(primarySwatchColorCode),
-            700: Color(primarySwatchColorCode),
-            800: Color(primarySwatchColorCode),
-            900: Color(primarySwatchColorCode),
-          },
-        ),
-      ),
+          appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.black,
+      )),
       title: 'Unsplash client',
       home: MultiBlocProvider(
         providers: [
