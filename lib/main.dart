@@ -28,9 +28,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.black,
-      )),
+        colorScheme: const ColorScheme.light().copyWith(primary: Colors.black),
+      ),
       title: 'Unsplash client',
       home: MultiBlocProvider(
         providers: [
