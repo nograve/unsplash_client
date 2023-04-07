@@ -11,29 +11,32 @@ class FeedView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 80,
         title: BlocBuilder<SearchTextFieldCubit, SearchTextFieldState>(
           builder: (context, state) => state.maybeWhen(
             disabled: (_) => false,
             orElse: () => true,
           )
-              ? TextField(
-                  onSubmitted: (query) => context
-                      .read<SearchTextFieldCubit>()
-                      .changeSearchQuery(query: query),
-                  style: const TextStyle(
-                    color: Colors.black,
-                  ),
-                  decoration: InputDecoration(
-                    hintText: 'Enter some text e.g.: dog',
-                    fillColor: Color(Colors.grey.shade300.value),
-                    filled: true,
-                    prefixIcon: const Icon(Icons.search),
-                    prefixIconColor: Colors.black,
-                    enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+              ? SafeArea(
+                  child: TextField(
+                    onSubmitted: (query) => context
+                        .read<SearchTextFieldCubit>()
+                        .changeSearchQuery(query: query),
+                    style: const TextStyle(
+                      color: Colors.black,
                     ),
-                    focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                    decoration: InputDecoration(
+                      hintText: 'Enter some text e.g.: dog',
+                      fillColor: Color(Colors.grey.shade300.value),
+                      filled: true,
+                      prefixIcon: const Icon(Icons.search),
+                      prefixIconColor: Colors.black,
+                      enabledBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
                     ),
                   ),
                 )
