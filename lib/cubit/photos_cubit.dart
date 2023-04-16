@@ -13,6 +13,7 @@ class PhotosCubit extends Cubit<PhotosState> {
         super(const PhotosState.empty(photos: []));
 
   final PhotoSearchRepository _photoSearchRepository;
+  final Logger _logger = Logger();
 
   Future<void> loadPhotos({String? query}) async {
     emit(const PhotosState.loading(photos: []));
@@ -25,8 +26,7 @@ class PhotosCubit extends Cubit<PhotosState> {
         emit(const PhotosState.empty(photos: []));
       }
     } catch (e) {
-      final logger = Logger();
-      logger.e(e);
+      _logger.e(e);
       emit(const PhotosState.error(photos: []));
     }
   }
