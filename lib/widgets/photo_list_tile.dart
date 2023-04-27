@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import '../views/detailed_view.dart';
+import 'package:unsplash_client/models/photo.dart';
+import 'package:unsplash_client/views/detailed_view.dart';
 
-import '../models/photo.dart';
-
+///
 class PhotoListTile extends StatelessWidget {
+  ///
   const PhotoListTile({
-    super.key,
     required this.photo,
+    super.key,
   });
 
+  ///
   final Photo photo;
 
   @override
@@ -36,26 +38,28 @@ class PhotoListTile extends StatelessWidget {
             ),
           ),
         ),
-        photo.description != null
-            ? Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text(
-                  photo.description!,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 16.0),
-                ),
-              )
-            : const SizedBox.shrink(),
-        photo.altDescription != null
-            ? Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text(
-                  photo.altDescription!,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 16.0),
-                ),
-              )
-            : const SizedBox.shrink(),
+        if (photo.description != null)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Text(
+              photo.description!,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 16),
+            ),
+          )
+        else
+          const SizedBox.shrink(),
+        if (photo.altDescription != null)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Text(
+              photo.altDescription!,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 16),
+            ),
+          )
+        else
+          const SizedBox.shrink(),
       ],
     );
   }

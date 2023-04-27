@@ -2,13 +2,16 @@ import 'dart:convert';
 
 import 'package:get_it/get_it.dart';
 
-import '../clients/unsplash_client.dart';
-import '../models/photo.dart';
+import 'package:unsplash_client/clients/unsplash_client.dart';
+import 'package:unsplash_client/models/photo.dart';
 
+///
 abstract class PhotoSearchRepository {
+  ///
   Future<List<Photo>> searchPhotos(String? query);
 }
 
+///
 class PhotoSearchRepositoryImpl implements PhotoSearchRepository {
   final _unsplashClient = GetIt.instance<UnsplashClient>();
 

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../cubit/search_text_field_cubit.dart';
-import '../cubit/photos_cubit.dart';
-import '../widgets/photo_list_tile.dart';
+import 'package:unsplash_client/cubit/photos_cubit.dart';
+import 'package:unsplash_client/cubit/search_text_field_cubit.dart';
+import 'package:unsplash_client/widgets/photo_list_tile.dart';
 
+///
 class FeedView extends StatelessWidget {
+  ///
   const FeedView({super.key});
 
   @override

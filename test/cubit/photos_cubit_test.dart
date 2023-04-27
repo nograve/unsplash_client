@@ -57,7 +57,8 @@ void main() {
         'loadPhotos method with bad query should change state to '
         'PhotosState.empty', () async {
       await photosCubit.loadPhotos(
-          query: '__________aosidaskdhj1i2y3123819yaisdudhkasj!');
+        query: '__________aosidaskdhj1i2y3123819yaisdudhkasj!',
+      );
       expect(
         photosCubit.state.whenOrNull(
           empty: (_) => true,

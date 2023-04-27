@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
+///
 class DetailedView extends StatelessWidget {
+  ///
   const DetailedView({
-    super.key,
     required this.imageUrl,
+    super.key,
   });
 
+  ///
   final String imageUrl;
 
   @override
