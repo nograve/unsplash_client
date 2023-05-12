@@ -5,14 +5,11 @@ import 'package:get_it/get_it.dart';
 import 'package:unsplash_client/clients/unsplash_client.dart';
 import 'package:unsplash_client/models/photo.dart';
 
-///
 // ignore: one_member_abstracts
 abstract class PhotoSearchRepository {
-  ///
   Future<List<Photo>> searchPhotos(String? query);
 }
 
-///
 class PhotoSearchRepositoryImpl implements PhotoSearchRepository {
   final _unsplashClient = GetIt.instance<UnsplashClient>();
 

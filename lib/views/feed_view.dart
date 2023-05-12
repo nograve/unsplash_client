@@ -4,9 +4,7 @@ import 'package:unsplash_client/cubit/photos_cubit.dart';
 import 'package:unsplash_client/cubit/search_text_field_cubit.dart';
 import 'package:unsplash_client/widgets/photo_list_tile.dart';
 
-///
 class FeedView extends StatelessWidget {
-  ///
   const FeedView({super.key});
 
   @override

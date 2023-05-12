@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:unsplash_client/models/photo.dart';
 import 'package:unsplash_client/views/detailed_view.dart';
 
-///
 class PhotoListTile extends StatelessWidget {
-  ///
   const PhotoListTile({
     required this.photo,
     super.key,
   });
 
-  ///
   final Photo photo;
 
   @override

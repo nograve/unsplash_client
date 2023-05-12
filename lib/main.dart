@@ -13,7 +13,6 @@ void main() {
   runApp(const MyApp());
 }
 
-///
 void loadClients() {
   final dio = Dio();
   dio.options.headers['Authorization'] = 'Client-ID '
@@ -22,9 +21,7 @@ void loadClients() {
       .registerLazySingleton<UnsplashClient>(() => UnsplashClient(dio));
 }
 
-///
 class MyApp extends StatelessWidget {
-  ///
   const MyApp({super.key});
 
   @override
