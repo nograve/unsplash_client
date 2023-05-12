@@ -29,7 +29,7 @@ class PhotoListTile extends StatelessWidget {
               child: InkWell(
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(
+                  MaterialPageRoute<void>(
                     builder: (context) =>
                         DetailedView(imageUrl: photo.urls!.regular!),
                   ),
